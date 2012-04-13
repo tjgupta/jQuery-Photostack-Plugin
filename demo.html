@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Photostack Demo</title>
+        <link rel="stylesheet" type="text/css" href="photoStack.css">
+        <style>
+		.photoStackWrap {
+			margin: 50px 25px;
+			float: left;
+		}
+		.photoStackWrap img {
+			left: 5px;
+			top: 5px;
+		}
+        </style>
+    </head>
+    <body>
+        <h1>Photostack Demo</h1>
+		
+		<img src="images/img1.jpg" class="stack">
+		<img src="images/img2.jpg" class="stack">
+		<img src="images/img3.jpg" class="stack">
+				
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="jquery.photoStack.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {	
+				// using technique described in README to make sure images are loaded before rendering stack effect
+				$('.stack').one('load', function() {
+					$(this).photoStack();
+				}).each(function() {
+					if (this.complete) {
+						$(this).trigger('load');
+					}
+				});
+            });
+        </script>
+    </body>
+</html>

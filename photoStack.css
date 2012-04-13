@@ -1,0 +1,23 @@
+/*** Photo Stack ***/
+.photoStack {
+	-webkit-box-shadow: 0 0 3px #bfbfbf;
+	-moz-box-shadow: 0 0 3px #bfbfbf;
+	box-shadow: 0 0 3px #bfbfbf;
+	border: 1px solid #bfbfbf;
+	position: absolute;
+	background: #fff;
+}
+.photoStack.first {
+	-moz-transform: rotate(-6deg);
+	-webkit-transform: rotate(-6deg);
+	-o-transform: rotate(-6deg);
+	-ms-transform: rotate(-6deg);
+	transform: rotate(-6deg);
+}
+.photoStack.second {
+	-moz-transform: rotate(-3deg);
+	-webkit-transform: rotate(-3deg);
+	-o-transform: rotate(-3deg);
+	-ms-transform: rotate(-3deg);
+	transform: rotate(-3deg);
+}

@@ -1,0 +1,64 @@
+This plugin will create a photostack effect around an image without using images or knowing image dimensions ahead of time. Compatible with browsers that are capable of rendering CSS box-shadow and transform.
+
+HTML
+------
+<img src="images/img1.jpg" class="stack">
+<img src="images/img2.jpg" class="stack">
+<img src="images/img3.jpg" class="stack">
+
+JS
+------
+$('.stack').photoStack({
+	'spacing': 10  // spacing between layers of stack
+});	
+
+CSS
+------
+.photoStack {
+	-webkit-box-shadow: 0 0 3px #bfbfbf;
+	-moz-box-shadow: 0 0 3px #bfbfbf;
+	box-shadow: 0 0 3px #bfbfbf;
+	border: 1px solid #bfbfbf;
+	position: absolute;
+	background: #fff;
+}
+.photoStack.first {
+	-moz-transform: rotate(-6deg);
+	-webkit-transform: rotate(-6deg);
+	-o-transform: rotate(-6deg);
+	-ms-transform: rotate(-6deg);
+	transform: rotate(-6deg);
+}
+.photoStack.second {
+	-moz-transform: rotate(-3deg);
+	-webkit-transform: rotate(-3deg);
+	-o-transform: rotate(-3deg);
+	-ms-transform: rotate(-3deg);
+	transform: rotate(-3deg);
+}
+
+
+Resulting HTML
+------
+<div class="photoStackWrap">
+	<div style="width: 192px; height: 283px;" class="photoStack first"></div>
+	<div style="width: 192px; height: 283px;" class="photoStack second"></div>
+	<div style="width: 192px; height: 283px;" class="photoStack third"></div>
+	<img class="stack" src="images/img1.jpg" style="position: relative;">
+</div>
+
+
+NOTE:
+The Photostack plugin is dependent on knowing the size of the image before firing. Due to issues with detecting when an image is fully loaded (particularly with a cached image), it is recommended to use a technique like:
+
+$('.stack').one('load', function() {
+	$(this).photoStack();
+}).each(function() {
+	if (this.complete) {
+		$(this).trigger('load');
+	}
+});
+
+Alternatively, you can look at a library like https://github.com/desandro/imagesloaded/.
+
+Also note, images included are copyrighted and used by permission for demo purposes only.
